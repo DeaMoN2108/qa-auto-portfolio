@@ -9,6 +9,7 @@ class LoginPage(BasePage):
         self.password = page.locator('[data-test="password"]')
         self.login_button = page.locator('[data-test="login-button"]')
         self.login_error_msg = page.locator('[data-test="error"]')
+        self.login_container_error_msg = page.locator('[class="error-message-container error"]')
     @allure.step("Авторизация пользователя с логином {username} и паролем {password}")
     def login(self, username: str, password: str):
         self.username.fill(username)
