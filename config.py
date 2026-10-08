@@ -7,6 +7,7 @@ ENV_FILE_PATH = ROOT_DIR / ".env"
 class Settings(BaseSettings):
     base_url: str
     standard_user: str
+    problem_user: str
     password: str
     checkout_one_page_url: str
     checkout_two_page_url: str
