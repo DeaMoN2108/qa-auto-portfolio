@@ -8,6 +8,7 @@ from config import config
 @pytest.mark.smoke
 def test_login_successful(login_page, inventory_page, base_page):
     login_page.open_url(config.base_url)
+    expect(login_page.login_button).to_have_css("background-color", "rgb(61, 220, 145)")
     login_page.login(config.standard_user, config.password)
     expect(base_page.title).to_have_text("Products")
 
@@ -22,6 +23,7 @@ def test_login_failure(login_page, username, password, expected_error_msg):
     login_page.open_url("https://www.saucedemo.com/")
     login_page.login(username, password)
     expect(login_page.login_error_msg).to_have_text(expected_error_msg)
+    expect(login_page.login_container_error_msg).to_have_css("background-color", "rgb(226, 35, 26)")
 
 @pytest.mark.skip(reason= "Баг Jira-1234: problem_user вызывает зависания страницы")
 def test_problem_user_login(login_page, inventory_page):
